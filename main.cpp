@@ -168,6 +168,230 @@ int main()
                 cout << "El resultado de la suma es: " << num2 << endl;
             break;
 
+            case 8:
+                cout << endl << "Ingrese numero: ";
+                cin >> num1;
+                cout << endl << "Ingrese numero: ";
+                cin >> num2;
+                cout << endl << "Ingrese numero: ";
+                cin >> num3;
+                num4 = 0;
+                for (int i = num1; i < num3 ; i += num1) {
+                    num4 += i;
+                    cout << i;
+                    if ((i+num1) < num3) {
+                        cout << "+";
+                    }
+                }
+                for (int j = num2; j < num3 ; ) {
+                    if ((j%num1) != 0) {
+                        num4 += j;
+                        cout << "+" << j;
+                    }
+                    j += num2;
+                }
+                cout << " = " << num4 << endl;
+            break;
+
+            case 9:
+                cout << endl << "Ingrese numero: ";
+                cin >> num1;
+                num2 = 0;
+                for (int k; num1 > 0 ; num1 /= 10) {
+                    k = (num1%10);
+                    for (int i = 1, j = k ; i < j; i++ ) {
+                        k *= j;
+                    }
+                    num2 += k;
+                }
+                cout << "El resultado de la suma es: " << num2 << endl;
+            break;
+
+            case 10:
+                cout << endl << "Ingrese numero: ";
+                cin >> num1;
+                num2 = 0;
+                for (int i=0, n_esimo=2, contador; i < num1 ; n_esimo++) {
+                    contador = 1;
+                    for (int divisor = 1; divisor <= (n_esimo/2) ;divisor++ ) {
+                        if ((n_esimo%divisor) == 0) {
+                            contador++;
+                        }
+                        if (contador>2) {
+                            break;
+                        }
+                    }
+                    num2 = n_esimo;
+                    if (contador == 2) {
+                        i++;
+                    }
+                }
+                cout << "El primo numero " << num1 << " es: " << num2 << endl;
+            break;
+
+            case 11:
+                cout << endl << "Ingrese numero: ";
+                cin >> num1;
+                num2=1; //num2 -> M.C.M(acumulado)
+                for (int i = 2, cont; i <= num1 ;) {
+                    cont = 2; //cont -> Divisor
+                    if ((num2%i) != 0) {
+                        for (; cont <= i ; cont++ ) {
+                            if ((i%cont) == 0) {
+                                num2 *= cont;
+                                break;
+                            }
+                        }
+                    }
+                    else {
+                        i++;
+                    }
+                }
+                cout << "El minimo comun multiplo es: " << num2 << endl;
+            break;
+
+            case 12:
+                cout << endl << "Ingrese numero: ";
+                cin >> num1;
+                num2 = 1;
+                for (int i = (num1/2); i > 0 ; i--) {
+                    if ((num1%i) == 0) {
+                        num2 = 1;
+                        for (int divisor = 2; divisor <= (i/2) ; divisor++ ) {
+                            if ((i%divisor) == 0) {
+                                num2 = 0;
+                                break;
+                            }
+                        }
+                        if (num2 != 0) {
+                            num2 = i;
+                            break;
+                        }
+                    }
+                }
+                cout << "El mayor factor primo de " << num1 << " es: " << num2 << endl;
+            break;
+
+            case 13:
+                cout << endl << "Ingrese numero: ";
+                cin >> num1;
+                num2=0;
+                for (int i = 2, j; i < num1 ; i++) {
+                    j = 1;
+                    for (int divisor = 2; divisor <= (i/2) ; divisor++ ) {
+                        if ((i%divisor) == 0) {
+                            j = 0;
+                            break;
+                        }
+                    }
+                    if (j != 0) {
+                        num2 += i;
+                    }
+                }
+                cout << "El resultado de la suma es: " << num2 << endl;
+            break;
+
+            case 14:
+                num1=0;
+                num2=0;
+                for (int i = 999; i > 100 ; i--) {
+                    for (int j = i; j > 100 ; j-- ) {
+                        num1 = 0;
+                        for (int k = (i*j); k>0 ; k/=10 ) {
+                            num1 += (k%10);
+                            if (k>9) {
+                                num1 *= 10;
+                            }
+                        }
+                        if ((i*j) == num1) {
+                            if (num1 >= num2) {
+                                num2 = num1;
+                                num3 = i;
+                                num4 = j;
+                            }
+                        }
+                    }
+                }
+                cout << endl << num3 << "*" << num4 << "=" << num2 << endl;
+            break;
+
+            case 15:
+                cout << endl << "Ingrese numero impar: ";
+                cin >> num1;
+                num2=0;
+                for (int i=1, j=0,k=2; i <= (num1*num1) ;) {
+                    num2 += i;
+                    if (j == 4) {
+                        j=0;
+                        k+=2;
+                    }
+                    i += k;
+                    j++;
+                }
+                cout << "En una espiral de " << num1 << "x" << num1 << ", la suma es: " << num2 << endl;
+            break;
+
+            case 16:
+                cout << endl << "Ingrese numero: ";
+                cin >> num1;
+                num2=0;
+                num3=0;
+                for (int i = 2, cont; i < num1 ; i++ ) {
+                    cont = 1;
+                    for (int j = i; j > 1 ; ) {
+                        if ((j%2) == 0) {
+                            j /= 2;
+                        }
+                        else {
+                            j = (3*j)+1;
+                        }
+                        cont++;
+                    }
+                    if (cont > num3) {
+                        num2 = i;
+                        num3 = cont;
+                    }
+                }
+                cout << "La serie mas larga es con la semilla: " << num2 << ", teniendo " << num3 << " terminos" << endl;
+                cout << num2 << ",";
+                for (int i = num2; i > 1 ; ) {
+                    if ((i%2) == 0) {
+                        i /= 2;
+                    }
+                    else {
+                        i = (3*i)+1;
+                    }
+                    if (i != 1) {
+                        cout << i << ",";
+                    }
+                    else {
+                        cout << i << endl;
+                    }
+                }
+            break;
+
+            case 17:
+                cout << endl << "Ingrese numero: ";
+                cin >> num1;
+                num2 = 0;
+                num3 = 0;
+                num4 = 0;
+                while (true) {
+                    num2++;
+                    num3 = ((num2*(num2+1))/2);
+                    num4 = 1;
+                    for (int i = 1; i <= (num3/2) ;i++ ) {
+                        if ((num3%i) == 0) {
+                            num4++;
+                        }
+                    }
+                    if (num4 > num1) {
+                        break;
+                    }
+                }
+                cout << "El numero es: " << num3 << " que tiene " << num4 << " divisores" << endl;
+            break;
+
             default:
                 if (elec != 0) {
                     cout << "Ingrese un valor correcto" << endl;
